@@ -164,13 +164,13 @@ function Canvas() {
                     startFullAuto();
                 }
                 if (xClick > 0 && xClick < canvasWidth && yClick > 0 && yClick < canvasHeight) {
-                    if (projectileReady) newProjectile(x, y, mouseDir);
+                    if (projectileReady) newProjectile(x, y, mouseDir, penetration);
                     projectileReady = false;
                 }
             }
         }
 
-        function newProjectile(posX, posY, mouseVector) {
+        function newProjectile(posX, posY, mouseVector, penetration) {
             projectiles.push([posX, posY, mouseVector, penetration]);
             setTimeout(() => { projectileReady = true }, fireRate)
         }
@@ -187,7 +187,7 @@ function Canvas() {
                 let yDiff = p5.mouseY - y + Math.random() * projectileBloom;
                 let mouseVector = p5.createVector(xDiff, yDiff);
                 mouseVector.normalize();
-                newProjectile(x, y, mouseVector);
+                newProjectile(x, y, mouseVector, penetration);
             }, fireRate + 100)
         }
 
@@ -391,7 +391,7 @@ function Canvas() {
                     {projectileBloom <= 0 ? 'Upgrade Maxed' : "+ Accuracy $" + bloomUpgradeCost}
                 </button>
 
-                <button
+                <button //penetration upgrade button
                     disabled={penetration >= maxPenetration}
                     onClick={() => { penetrationUpgrade(1) }}>
                     {penetration >= maxPenetration ? "Upgrade Maxed" : "+ Penetration $" + penetrationUpgradeCost}
