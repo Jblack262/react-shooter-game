@@ -1,13 +1,45 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.canvasContainer {
+    width: 100vw;
+}
+.gameOver {
+    position: absolute;
+    left: calc(50% - 150px);
+    top: 50%;
+    color: red;
+    font-size: 300%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    text-shadow: 
+        -1px -1px 0 white,
+        -1px 1px 0 white,
+        1px -1px 0 white,
+        1px 1px 0 white;
+}
+.gameOver h1, .gameOver p {
+    margin: 0;
+}
+
+.upgradesContainer {
+    width: 300px;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.upgradesContainer button {
+    height: max-content;
+    margin: 1rem;
+    padding: 1rem 2rem;
 }
